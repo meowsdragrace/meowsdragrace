@@ -1,26 +1,59 @@
 body {
   font-family: Arial, sans-serif;
-  background: #111;
+  background: #0f0f0f;
   color: #fff;
-  text-align: center;
-  padding: 40px;
+  padding: 20px;
 }
 
-h1 {
+h1, h2 {
   color: hotpink;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.card {
+  background: #1c1c1c;
+  border: 2px solid hotpink;
+  border-radius: 16px;
+  width: 260px;
+  padding: 16px;
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.card h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.attributes {
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
 }
 
 button {
+  width: 100%;
+  margin-top: 10px;
   background: hotpink;
   color: #111;
   border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: 20px;
-}
-
-button:hover {
-  opacity: 0.8;
 }
