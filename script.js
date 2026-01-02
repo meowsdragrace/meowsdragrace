@@ -25,18 +25,29 @@ function iniciarJogo() {
 }
 
 function mostrarCartas(cartas) {
-  let html = `<h2>Cartas do Jogador</h2><div class="cards">`;
+  let html = `<h2>Suas Drag Queens</h2><div class="cards">`;
 
   cartas.forEach((queen) => {
     html += `
       <div class="card">
         <img src="${queen.imagem}">
         <h3>${queen.nome}</h3>
+        <div class="tag">DRAG QUEEN</div>
+
         <div class="attributes">
           ${Object.entries(queen.atributos).map(
-            ([attr, val]) => `<div>${attr}: ${val}</div>`
+            ([attr, val]) => `
+              <div class="attr">
+                <strong>${attr}</strong>
+                <div class="bar">
+                  <span style="width:${val * 10}%"></span>
+                </div>
+                ${val}
+              </div>
+            `
           ).join("")}
         </div>
+
         <button>Jogar</button>
       </div>
     `;
