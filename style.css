@@ -1,59 +1,102 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #0f0f0f;
+  font-family: "Arial", sans-serif;
+  background: radial-gradient(circle at top, #2b0030, #000);
   color: #fff;
   padding: 20px;
 }
 
 h1, h2 {
-  color: hotpink;
   text-align: center;
+  color: #ff5cad;
 }
 
 .cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 16px;
+  gap: 24px;
 }
 
 .card {
-  background: #1c1c1c;
-  border: 2px solid hotpink;
-  border-radius: 16px;
-  width: 260px;
+  width: 280px;
+  background: linear-gradient(160deg, #1c1c1c, #2a002f);
+  border-radius: 20px;
   padding: 16px;
+  box-shadow: 0 0 20px rgba(255, 92, 173, 0.4);
+  border: 2px solid #ff5cad;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .card img {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  margin: 0 auto 10px;
+  margin: 0 auto 12px;
+  border: 3px solid #ff5cad;
+  box-shadow: 0 0 15px rgba(255,92,173,0.6);
 }
 
 .card h3 {
   text-align: center;
+  font-size: 22px;
+  margin: 6px 0;
+}
+
+.tag {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #ff9ad5;
   margin-bottom: 10px;
 }
 
 .attributes {
-  font-size: 14px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4px;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.attr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bar {
+  flex: 1;
+  height: 6px;
+  background: #333;
+  border-radius: 6px;
+  margin-left: 8px;
+  overflow: hidden;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #ff5cad, #ffb3de);
 }
 
 button {
+  margin-top: 14px;
   width: 100%;
-  margin-top: 10px;
-  background: hotpink;
+  background: linear-gradient(90deg, #ff5cad, #ff87c2);
   color: #111;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 14px;
   font-weight: bold;
   cursor: pointer;
+  font-size: 15px;
 }
