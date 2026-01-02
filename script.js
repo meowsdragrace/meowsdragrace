@@ -56,3 +56,72 @@ function mostrarCartas(cartas) {
   html += `</div>`;
   document.body.innerHTML = html;
 }
+// =========================
+// BARALHO DE DRAG QUEENS
+// =========================
+
+const allQueens = [
+  {
+    name: "Miss Chaos",
+    image: "",
+    attributes: {
+      acting: 6,
+      lipsync: 9,
+      look: 8,
+      runway: 7,
+      improv: 7,
+      comedy: 9,
+      make: 7,
+      singing: 6,
+      dancing: 8,
+      branding: 6
+    }
+  }
+  // depois você adiciona mais
+];
+
+// =========================
+// JOGADORES
+// =========================
+
+const TOTAL_PLAYERS = 12;
+const CARDS_PER_PLAYER = 10;
+
+let players = [];
+
+for (let i = 1; i <= TOTAL_PLAYERS; i++) {
+  players.push({
+    name: `Jogador ${i}`,
+    deck: []
+  });
+}
+
+// =========================
+// FUNÇÕES
+// =========================
+
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+function distributeCards() {
+  let deck = [];
+
+  while (deck.length < TOTAL_PLAYERS * CARDS_PER_PLAYER) {
+    deck = deck.concat(allQueens);
+  }
+
+  shuffle(deck);
+
+  players.forEach(player => {
+    player.deck = deck.splice(0, CARDS_PER_PLAYER);
+  });
+
+  console.log(players);
+}
+
+// =========================
+// INICIAR JOGO
+// =========================
+
+distributeCards();
