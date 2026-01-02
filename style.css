@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  color: hotpink;
+}
+
+button {
+  background: hotpink;
+  color: #111;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
