@@ -1,40 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Drag Card Game</title>
-
-  <!-- FONTE -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
+  <meta charset="UTF-8" />
+  <title>Meows Drag Race</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <!-- CARTA -->
-  <div class="card">
-    <div class="avatar"></div>
+<h1>Meows Drag Race</h1>
 
-    <h2 class="queen-name">Miss Chaos</h2>
+<div class="controls">
+  <select id="playerSelect"></select>
+</div>
 
-    <div class="attributes">
-      <div>Acting: <span>6</span></div>
-      <div>Lipsync: <span>9</span></div>
-      <div>Look: <span>8</span></div>
-      <div>Runway: <span>7</span></div>
-      <div>Improv: <span>7</span></div>
-      <div>Comedy: <span>9</span></div>
-      <div>Make: <span>7</span></div>
-      <div>Singing: <span>6</span></div>
-      <div>Dancing: <span>8</span></div>
-      <div>Branding: <span>6</span></div>
-    </div>
+<div id="cardsContainer" class="cards-container"></div>
 
-    <button class="play-btn">Jogar</button>
-  </div>
 <script src="script.js"></script>
-
 </body>
 </html>
+
