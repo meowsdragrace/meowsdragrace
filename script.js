@@ -1,47 +1,47 @@
-const queens = [
-  {
-    nome: "Ruby Glam",
-    carisma: 8,
-    talento: 7,
-    runway: 9
-  },
-  {
-    nome: "Lola Lux",
-    carisma: 9,
-    talento: 6,
-    runway: 7
-  },
-  {
-    nome: "Miss Chaos",
-    carisma: 6,
-    talento: 9,
-    runway: 8
-  }
+const TOTAL_JOGADORES = 12;
+const CARTAS_POR_JOGADOR = 10;
+
+// Exemplo de baralho (vamos expandir depois)
+let baralho = [
+  criarQueen("Ruby Glam", 8,9,7,8,6,7,9,5,8,7),
+  criarQueen("Lola Lux", 9,8,6,7,8,6,8,6,7,8),
+  criarQueen("Miss Chaos", 6,9,8,7,7,9,7,6,8,6)
 ];
 
-function iniciarJogo() {
-  mostrarQueens();
+function criarQueen(nome, acting, lipsync, look, runway, improv, comedy, make, singing, dancing, branding) {
+  return {
+    nome,
+    imagem: "https://via.placeholder.com/150",
+    atributos: {
+      acting, lipsync, look, runway,
+      improv, comedy, make,
+      singing, dancing, branding
+    }
+  };
 }
 
-function mostrarQueens() {
-  let html = "<h2>Escolha sua Drag Queen</h2>";
+function iniciarJogo() {
+  mostrarCartas(baralho);
+}
 
-  queens.forEach((queen, index) => {
+function mostrarCartas(cartas) {
+  let html = `<h2>Cartas do Jogador</h2><div class="cards">`;
+
+  cartas.forEach((queen) => {
     html += `
-      <div style="border:1px solid hotpink; padding:15px; margin:10px;">
+      <div class="card">
+        <img src="${queen.imagem}">
         <h3>${queen.nome}</h3>
-        <p>Carisma: ${queen.carisma}</p>
-        <p>Talento: ${queen.talento}</p>
-        <p>Runway: ${queen.runway}</p>
-        <button onclick="escolherQueen(${index})">Escolher</button>
+        <div class="attributes">
+          ${Object.entries(queen.atributos).map(
+            ([attr, val]) => `<div>${attr}: ${val}</div>`
+          ).join("")}
+        </div>
+        <button>Jogar</button>
       </div>
     `;
   });
 
+  html += `</div>`;
   document.body.innerHTML = html;
-}
-
-function escolherQueen(index) {
-  const queen = queens[index];
-  alert(`Você escolheu ${queen.nome}! 💖`);
 }
