@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
-  <title>Meows Drag Race</title>
+  <title>Drag Card Game</title>
+
+  <!-- FONTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <h1>💅 Meows Drag Race</h1>
-  <p>Escolha sua drag queen e arrase no episódio!</p>
+  <!-- CARTA -->
+  <div class="card">
+    <div class="avatar"></div>
 
-  <button onclick="iniciarJogo()">Começar Episódio</button>
+    <h2 class="queen-name">Miss Chaos</h2>
 
-  <script src="script.js"></script>
+    <div class="attributes">
+      <div>Acting: <span>6</span></div>
+      <div>Lipsync: <span>9</span></div>
+      <div>Look: <span>8</span></div>
+      <div>Runway: <span>7</span></div>
+      <div>Improv: <span>7</span></div>
+      <div>Comedy: <span>9</span></div>
+      <div>Make: <span>7</span></div>
+      <div>Singing: <span>6</span></div>
+      <div>Dancing: <span>8</span></div>
+      <div>Branding: <span>6</span></div>
+    </div>
+
+    <button class="play-btn">Jogar</button>
+  </div>
+
 </body>
 </html>
