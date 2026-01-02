@@ -1,61 +1,3 @@
-const TOTAL_JOGADORES = 12;
-const CARTAS_POR_JOGADOR = 10;
-
-// Exemplo de baralho (vamos expandir depois)
-let baralho = [
-  criarQueen("Ruby Glam", 8,9,7,8,6,7,9,5,8,7),
-  criarQueen("Lola Lux", 9,8,6,7,8,6,8,6,7,8),
-  criarQueen("Miss Chaos", 6,9,8,7,7,9,7,6,8,6)
-];
-
-function criarQueen(nome, acting, lipsync, look, runway, improv, comedy, make, singing, dancing, branding) {
-  return {
-    nome,
-    imagem: "https://via.placeholder.com/150",
-    atributos: {
-      acting, lipsync, look, runway,
-      improv, comedy, make,
-      singing, dancing, branding
-    }
-  };
-}
-
-function iniciarJogo() {
-  mostrarCartas(baralho);
-}
-
-function mostrarCartas(cartas) {
-  let html = `<h2>Suas Drag Queens</h2><div class="cards">`;
-
-  cartas.forEach((queen) => {
-    html += `
-      <div class="card">
-        <img src="${queen.imagem}">
-        <h3>${queen.nome}</h3>
-        <div class="tag">DRAG QUEEN</div>
-
-        <div class="attributes">
-          ${Object.entries(queen.atributos).map(
-            ([attr, val]) => `
-              <div class="attr">
-                <strong>${attr}</strong>
-                <div class="bar">
-                  <span style="width:${val * 10}%"></span>
-                </div>
-                ${val}
-              </div>
-            `
-          ).join("")}
-        </div>
-
-        <button>Jogar</button>
-      </div>
-    `;
-  });
-
-  html += `</div>`;
-  document.body.innerHTML = html;
-}
 // =========================
 // BARALHO DE DRAG QUEENS
 // =========================
@@ -63,7 +5,7 @@ function mostrarCartas(cartas) {
 const allQueens = [
   {
     name: "Miss Chaos",
-    image: "",
+    image: "https://via.placeholder.com/150",
     attributes: {
       acting: 6,
       lipsync: 9,
@@ -77,7 +19,6 @@ const allQueens = [
       branding: 6
     }
   }
-  // depois você adiciona mais
 ];
 
 // =========================
@@ -108,7 +49,7 @@ function distributeCards() {
   let deck = [];
 
   while (deck.length < TOTAL_PLAYERS * CARDS_PER_PLAYER) {
-    deck = deck.concat(allQueens);
+    deck = deck.concat(allQueens.map(q => ({ ...q })));
   }
 
   shuffle(deck);
@@ -116,9 +57,53 @@ function distributeCards() {
   players.forEach(player => {
     player.deck = deck.splice(0, CARDS_PER_PLAYER);
   });
-
-  console.log(players);
 }
+
+function renderPlayerSelector() {
+  const select = document.getElementById("playerSelect");
+  players.forEach((p, i) => {
+    const option = document.createElement("option");
+    option.value = i;
+    option.textContent = p.name;
+    select.appendChild(option);
+  });
+
+  select.addEventListener("change", () => {
+    renderCards(players[select.value].deck);
+  });
+}
+
+function renderCards(deck) {
+  const container = document.getElementById("cardsContainer");
+  container.innerHTML = "";
+
+  deck.forEach(queen => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${queen.image}">
+      <h2>${queen.name}</h2>
+      <div class="attributes">
+        ${Object.entries(queen.attributes)
+          .map(([key, value]) =>
+            `<div class="attr">${key}: ${value}</div>`
+          ).join("")}
+      </div>
+      <button class="play-btn">Jogar</button>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// =========================
+// INICIAR JOGO
+// =========================
+
+distributeCards();
+renderPlayerSelector();
+renderCards(players[0].deck);
 
 // =========================
 // INICIAR JOGO
